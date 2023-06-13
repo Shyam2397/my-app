@@ -1,9 +1,9 @@
 import BasePage from "../basepage/basepage";
 
-export default function StudentList() {
-  return(
+export default function Profile() {
+  return (
     <BasePage>
-      <h1>grfyf</h1>
+        <div>Profile</div>
     </BasePage>
   )
 }
