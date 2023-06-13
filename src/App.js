@@ -9,6 +9,9 @@ import StudentCard from "./components/StudentCard";
 import { useState } from "react";
 import DashBoard from "./pages/DashBoard";
 import Profile from "./pages/Profile";
+import InterviewNotes from "./pages/InterviewNotes";
+
+
 
 
 function App() {
@@ -31,10 +34,22 @@ const StudentData = [
 const [Data,setData] = useState(StudentData)
   return (
     <div className="App">
-        <StudentList
-          StudentData = {Data}
-          setData = {setData}
-        />
+
+        <Routes>
+            <Route exact path="/" element={<DashBoard/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/student/all" element=
+              {
+                <StudentList
+                  StudentData = {Data}
+                  setData = {setData}
+                />
+              }
+            />
+            <Route path="/interviewnotes" element={<InterviewNotes/>}/>
+        </Routes>
+
+        
     </div>
   );
 }

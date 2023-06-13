@@ -1,13 +1,15 @@
 import BasePage from "../basepage/basepage";
 import StudentCard from "../components/StudentCard";
 
-export default function StudentList({StudentData}){
+export default function StudentList({StudentData,setData}){
     return(
         <BasePage>
             {StudentData.map((stud,ind)=>(
                 <StudentCard
                     student={stud}
-                    key={ind}
+                    StudentData={StudentData}
+                    setData={setData}
+                    key={stud.id}
                 />
             ))}
         </BasePage>
