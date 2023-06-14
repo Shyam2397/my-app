@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom"
 
 
 function StudentCard({student,StudentData,setData}) {
+
+  const navigate = useNavigate()
   
   const removeStud = (id)=>{
      const newStudData = StudentData.filter((stud,ind)=>stud.id != id)
@@ -14,6 +17,12 @@ function StudentCard({student,StudentData,setData}) {
                 <p className="text-left">{student.batch}</p>
                 <p className="text-left">{student.education}</p>
                 <div className="card-actions justify-end">
+                    <button className="btn bg-red-800 mt-3"
+                    onClick={()=>navigate(`/EditStudents/id`)}
+                    >edit</button>
+                    
+                </div>
+                <div>
                     <button className="btn bg-red-800 mt-3"
                     onClick={()=>removeStud(student.id)}
                     >Delete</button>

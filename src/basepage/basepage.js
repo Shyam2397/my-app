@@ -14,7 +14,7 @@ export default function BasePage({children}) {
             <LeftSideBar />
           </div>
           <div className="divider lg:divider-horizontal"></div>
-          <div className="grid flex-grow w-3/4 h-full card bg-base-300 rounded-box place-items-center mx-3">
+          <div className="grid flex-grow w-3/4 h-full card bg-base-300 rounded-box mx-3">
             {children}
           </div>
         </div>
