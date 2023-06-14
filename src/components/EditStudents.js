@@ -1,16 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasePage from "../basepage/basepage";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
-export default function EditStudents({StudentData,setData}) {
+export default function EditStudents({ StudentData, setData }) {
 
-    const {id} = useParams()
+    const navigate = useNavigate()
 
-    const [idx,setIdx] = useState("");
-    const [name,setName] = useState("");
-    const [batch,setBatch] = useState("");
-    const [education,setEducation] = useState("");
+    const { id } = useParams()
+
+    const [idx, setIdx] = useState("");
+    const [name, setName] = useState("");
+    const [batch, setBatch] = useState("");
+    const [education, setEducation] = useState("");
+
+    useEffect(() => {
+        const selectedStudent = StudentData.find((stud, index) => stud.id == id)
+
+        setIdx(selectedStudent.id)
+        setName(selectedStudent.name)
+        setBatch(selectedStudent.batch)
+        setEducation(selectedStudent.education)
+    }, [id, StudentData])
+
+    function editStudent(){
+        const editedStudObj = {
+            id:idx,
+            name,
+            batch,
+            education
+        }
+        // console.log(editedStudObj)
+
+        const editIndex = StudentData.findIndex((stud,index)=> stud.id == id)
+        StudentData[editIndex] = editedStudObj
+        setData([...StudentData])
+
+        navigate("/student/all")
+
+    }
 
     return (
         <BasePage>
@@ -57,8 +85,8 @@ export default function EditStudents({StudentData,setData}) {
                     />
                 </label>
                 <button className="btn btn-primary w-48 mt-20"
-                    
-                >Add Student</button>
+                    onClick={()=>editStudent()}
+                >Edit Student</button>
             </div>
         </BasePage>
     )

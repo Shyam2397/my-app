@@ -1,7 +1,7 @@
 import LeftSideBar from "../components/Leftsidebar";
 import TopBar from "../components/topbar";
 
-export default function BasePage({children}) {
+export default function BasePage({ children }) {
   return (
     <div className="flex flex-col w-full border-opacity-50">
       <div className="grid h-20 place-items-center mx-3 mt-3">

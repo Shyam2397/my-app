@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import InterviewNotes from "./pages/InterviewNotes";
 import AddStudents from "./components/AddStudents";
 import EditStudents from "./components/EditStudents";
+import NoPage from "./pages/NoPage";
 
 
 
@@ -46,7 +47,7 @@ function App() {
             />
           }
         />
-        <Route path="/EditStudents/id" element=
+        <Route path="/EditStudents/:id" element=
           {
             <EditStudents
               StudentData={Data}
@@ -64,6 +65,7 @@ function App() {
           }
         />
         <Route path="/interview/notes" element={<InterviewNotes />} />
+        <Route path="*" element={<NoPage/>}/>
       </Routes>
 
 
