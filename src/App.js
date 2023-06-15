@@ -33,6 +33,14 @@ function App() {
     }
   ]
 
+  const pages = [
+    {
+      name: "student",
+      path: "/student/all"
+    }
+  ]
+
+  const [crumState,setCrumState]  = useState(pages)
   const [Data, setData] = useState(StudentData)
   return (
     <div className="App">
@@ -52,6 +60,8 @@ function App() {
             <EditStudents
               StudentData={Data}
               setData={setData}
+              crumState={crumState}
+              setCrumState={setCrumState}
             />
           }
         />
@@ -59,6 +69,8 @@ function App() {
         <Route path="/student/all" element=
           {
             <StudentList
+              crumState={crumState}
+              setCrumState={setCrumState}
               StudentData={Data}
               setData={setData}
             />

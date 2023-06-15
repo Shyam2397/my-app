@@ -1,13 +1,26 @@
 import { useNavigate } from "react-router-dom"
 
 
-function StudentCard({student,StudentData,setData}) {
+function StudentCard({student,StudentData,setData,crumState,setCrumState}) {
 
   const navigate = useNavigate()
   
   const removeStud = (id)=>{
-     const newStudData = StudentData.filter((stud,ind)=>stud.id != id)
-     setData(newStudData)
+    
+    let response = window.confirm("Are you sure want to delete?");
+    if(response){
+        const newStudData = StudentData.filter((stud,ind)=>stud.id != id)
+        setData(newStudData)
+    }
+    
+  }
+  const handleEdit =(id)=>{
+    const newCrum = {
+        name:"EditStudents",
+        path: `/EditStudents/${id}`
+    }
+    setCrumState([...crumState,newCrum])
+    navigate(`/EditStudents/${id}`)
   }
   return (
     <div>
@@ -18,7 +31,7 @@ function StudentCard({student,StudentData,setData}) {
                 <p className="text-left">{student.education}</p>
                 <div className="card-actions justify-end">
                     <button className="btn bg-red-800 text-white mt-3"
-                    onClick={()=>navigate(`/EditStudents/${student.id}`)}
+                    onClick={()=>handleEdit(student.id)}
                     >edit</button>
                     
                 </div>
