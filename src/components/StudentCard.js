@@ -9,7 +9,7 @@ function StudentCard({student,StudentData,setData,crumState,setCrumState}) {
     
     let response = window.confirm("Are you sure want to delete?");
     if(response){
-        const newStudData = StudentData.filter((stud,ind)=>stud.id != id)
+        const newStudData = StudentData.filter((stud,ind)=>stud.id !== id)
         setData(newStudData)
     }
     
