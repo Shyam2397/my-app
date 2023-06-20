@@ -18,6 +18,8 @@ import NoPage from "./pages/NoPage";
 
 function App() {
 
+  //students data
+
   const StudentData = [
     {
       id: 1,
