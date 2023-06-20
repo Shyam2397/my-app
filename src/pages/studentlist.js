@@ -1,24 +1,16 @@
 import BasePage from "../basepage/basepage";
 import CrumBar from "../components/CrumBar";
 import StudentCard from "../components/StudentCard";
+import { AppState } from "../context/AppProvider";
 
-export default function StudentList({StudentData,setData,crumState,setCrumState}){
-    return(
-        <BasePage>
-        <CrumBar
-            crumState={crumState}
-            setCrumState={setCrumState}
-        />
-            {StudentData.map((stud,ind)=>(
-                <StudentCard
-                    student={stud}
-                    StudentData={StudentData}
-                    setData={setData}
-                    key={stud.id}
-                    crumState={crumState}
-                    setCrumState={setCrumState}
-                />
-            ))}
-        </BasePage>
-    )
+export default function StudentList() {
+  const { studentData } = AppState();
+  return (
+    <BasePage>
+      <CrumBar />
+      {studentData.map((stud, ind) => (
+        <StudentCard student={stud} key={stud.id} />
+      ))}
+    </BasePage>
+  );
 }
